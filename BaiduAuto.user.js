@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
 // @description up your alexa rank...v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
@@ -30,7 +30,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.7
+// @version     1.3.8
 // ==/UserScript==
 
 (function() {
@@ -151,7 +151,7 @@
 			switch(domain){
 				case "www.baidu.com":
 					//设置关键字，并提交表单。
-					$("#kw").val(keyword);
+					$("#kw").val(keyword.replace("/tool",""));
 					$("#fm").find("form").submit();
 				break;
 
