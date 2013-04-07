@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank...v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
+// @description up your alexa rank...v1.3.9 remove ChangeUrl function v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -30,7 +30,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.8
+// @version     1.3.9
 // ==/UserScript==
 
 (function() {
@@ -466,7 +466,8 @@
 					timer = Math.random()*(longTime-lestTime)+lestTime;
 					timer3 = Math.random()*(2000)+3000;
 					if(aMatch.length>0){
-						aMatchHref = changeUrl(aMatch[aMatch.length-1].href);
+						//aMatchHref = changeUrl(aMatch[aMatch.length-1].href);
+						aMatchHref = aMatch[aMatch.length-1].href;
 						//$(aMatch[aMatch.length-1]).removeAttr("href");
 						aMatch[aMatch.length-1].addEventListener("click",function(evt){
 							evt.preventDefault();
@@ -497,10 +498,10 @@
 		  //});
 	}
 
-	function changeUrl(url){
-	    var re = /zdomo.com\/tool(?:\/(\w+)(?:\/\?id=(\w+|\d+))?)?/i;
-	    return re.test(url)?"http://"+ RegExp.$1 + ".zdomo.com" +(RegExp.$2?"/"+RegExp.$2:""):url;
-  	}
+	// function changeUrl(url){
+	//     var re = /zdomo.com\/tool(?:\/(\w+)(?:\/\?id=(\w+|\d+))?)?/i;
+	//     return re.test(url)?"http://"+ RegExp.$1 + ".zdomo.com" +(RegExp.$2?"/"+RegExp.$2:""):url;
+ //  	}
 
 	//隔一段时间，自动关闭最后一层的标签
 	timer2 = Math.random()*(tabCloseLongTime-tabCloseLestTime)+tabCloseLestTime;
