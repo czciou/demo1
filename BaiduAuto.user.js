@@ -98,7 +98,7 @@
 
 	function getMyDomainAndSetKeyword(){
 		//自定义搜索关键字列表
-		var zdomoKeywords = ["zdomo.com","site:www.zdomo.com","site:www.zdomo.com/tool"];
+		var zdomoKeywords = ["zdomo.com","site:www.zdomo.com"];
 		var buychuanKeywords =["buychuan.com","site:www.buychuan.com"];
 		var zjmovieKeywords =["zjmovie.net","site:www.zjmovie.net"];
 		//根据url判断是随机域名还是自定义域名
@@ -151,13 +151,13 @@
 			switch(domain){
 				case "www.baidu.com":
 					//设置关键字，并提交表单。
-					$("#kw").val(keyword.replace("/tool",""));
+					$("#kw").val(keyword);
 					$("#fm").find("form").submit();
 				break;
 
 				case "www.so.com":
 					//设置关键字，并提交表单。
-					$("#input").val(keyword.replace("/tool",""));
+					$("#input").val(keyword);
 					$("#search-box").find("form").submit();
 				break;
 
@@ -187,14 +187,14 @@
 
 				case "www.jike.com":
 					//设置关键字，并提交表单。
-					$("#txt").val(keyword.replace("/tool",""));
+					$("#txt").val(keyword);
 					$(".searchHome").find("form").submit();
 				break;
 
 				//http://so.aliyun.com/
 				case "so.aliyun.com":
 					//设置关键字，并提交表单。
-					$("#sq").val(keyword.replace("/tool",""));
+					$("#sq").val(keyword);
 					$("#aliyun_box").find("form").submit();
 				break;
 			}
