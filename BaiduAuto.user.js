@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank...v1.3.9 remove ChangeUrl function v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
+// @description up your alexa rank...v1.3.10 fix so.com remove ChangeUrl function v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
