@@ -285,7 +285,7 @@
 		//找出所有是zdomo.com站点的链接。
 		var as = document.getElementsByTagName("a");
 		var tempHref;
-		if(domain=="www.baidu.com" || domain =="www.so.com"){
+		if(domain=="www.baidu.com"){
 			for (var i = 0; i < as.length; i++) {
 				tempHref =as[i].href;
 				if(tempHref.indexOf("link?")>0 || tempHref.indexOf("url?")>0){
