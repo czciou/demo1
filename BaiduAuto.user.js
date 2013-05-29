@@ -152,7 +152,7 @@
 				case "www.baidu.com":
 					//设置关键字，并提交表单。
 					$("#kw").val(keyword);
-					$("#fm").find("form").submit();
+					$("form").eq(0).submit();
 				break;
 
 				case "www.so.com":
