@@ -30,7 +30,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.13
+// @version     1.3.14
 // ==/UserScript==
 
 (function() {
