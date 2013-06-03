@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank...v1.3.13 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
+// @description up your alexa rank...v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 v1.3.4 add keyword site:www.zdomo.com/tool 解决二级域名问题  v1.3.1 修复so.com返回当前页总是1的问题。V1.3.0 添加百度及so.com搜索引擎； V1.1  修复打开页面执行onclick事件导致打开加入收藏弹框.v1.2模拟用户浏览了一段时间后关闭标签，添加对aliyun搜索引擎的支持。v1.2.1:修复onclick事件
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -100,7 +100,7 @@
 		//自定义搜索关键字列表
 		var zdomoKeywords = ["www.zdomo.com","zdomo.com","site:www.zdomo.com","site:zdomo.com"];
 		var buychuanKeywords =["www.buychuan.com","buychuan.com","site:www.buychuan.com","site:buychuan.com"];
-		var zjmovieKeywords =["www.zjmovie.net","zjmovie.net","site:www.zjmovie.net","site:zjmovie.net"];
+		//var zjmovieKeywords =["www.zjmovie.net","zjmovie.net","site:www.zjmovie.net","site:zjmovie.net"];
 		//根据url判断是随机域名还是自定义域名
 		if(url.indexOf("site")>0){ 
 		//自定义
@@ -117,11 +117,11 @@
 		} else{ 
 		//随机
 			var rnd = Math.random()*1000;
-			if(rnd<100) {
-				keywords = zjmovieKeywords;
-				return mydomains[1];
-			}
-			else if(rnd<250) {
+			// if(rnd<100) {
+			// 	keywords = zjmovieKeywords;
+			// 	return mydomains[1];
+			// }
+		 	if(rnd<200) {
 				keywords = buychuanKeywords;
 				return mydomains[2];
 			}
