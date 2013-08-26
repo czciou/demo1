@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank... v1.3.15 去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank... v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -27,7 +27,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.15
+// @version     1.3.16
 // ==/UserScript==
 
 (function() {
@@ -289,6 +289,7 @@
 				tempHref =as[i].href;
 				if(tempHref.indexOf("link?")>0 || tempHref.indexOf("url?")>0){
 					$(as[i]).removeAttr("onclick");
+					if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 					aMatch.push(as[i]);
 				}
 			};	
@@ -302,11 +303,13 @@
 				tempHref =as[i].href;
 				if(re.test(tempHref)){
 					$(as[i]).removeAttr("onclick");
+					if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 					aMatch.push(as[i]);
 				}
 				else{
 					if(parseInt(Math.random()*1000) % 2 ==0 && tempHref.indexOf("soso.com")<0 && tempHref.indexOf("sogou.com")<0 && tempHref.indexOf("bing.com")<0 && tempHref.indexOf("jike.com")<0 && tempHref.indexOf("youdao.com")<0 && tempHref.indexOf("aliyun.com")<0){
 						$(as[i]).removeAttr("onclick");
+						if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 						aMatch.push(as[i]);
 					}
 				}
@@ -469,6 +472,7 @@
 						aMatchHref = aMatch[aMatch.length-1].href;
 						//$(aMatch[aMatch.length-1]).removeAttr("href");
 						aMatch[aMatch.length-1].addEventListener("click",function(evt){
+							
 							if(getOs()=="Chrome"){
 								evt.preventDefault();
 	                            window.opener.location.href=aMatchHref;
