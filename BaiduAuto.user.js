@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank... v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.3.17:去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -20,14 +20,14 @@
 // @include       http://cn.bing.com/
 // @include       http://cn.bing.com/?*
 // @include       http://cn.bing.com/search*
-// @include       http://www.jike.com/
-// @include       http://www.jike.com/?*
-// @include       http://www.jike.com/so*
+// @include       http://www.panguso.com/
+// @include       http://www.panguso.com/?*
+// @include       http://www.panguso.com/so*
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.16
+// @version     1.3.17
 // ==/UserScript==
 
 (function() {
@@ -183,7 +183,7 @@
 					$(".search_controls").find("form").submit();
 				break;
 
-				case "www.jike.com":
+				case "www.panguso.com":
 					//设置关键字，并提交表单。
 					$("#txt").val(keyword);
 					$(".searchHome").find("form").submit();
@@ -258,7 +258,7 @@
 				}
 			break;
 
-			case "www.jike.com":
+			case "www.panguso.com":
 				//获取pages
 				if($("#pager")){
 					pages = $("#pager").find(".pg").children();
@@ -307,7 +307,7 @@
 					aMatch.push(as[i]);
 				}
 				else{
-					if(parseInt(Math.random()*1000) % 2 ==0 && tempHref.indexOf("soso.com")<0 && tempHref.indexOf("sogou.com")<0 && tempHref.indexOf("bing.com")<0 && tempHref.indexOf("jike.com")<0 && tempHref.indexOf("youdao.com")<0 && tempHref.indexOf("aliyun.com")<0){
+					if(parseInt(Math.random()*1000) % 2 ==0 && tempHref.indexOf("soso.com")<0 && tempHref.indexOf("sogou.com")<0 && tempHref.indexOf("bing.com")<0 && tempHref.indexOf("panguso.com")<0 && tempHref.indexOf("youdao.com")<0 && tempHref.indexOf("aliyun.com")<0){
 						$(as[i]).removeAttr("onclick");
 						if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 						aMatch.push(as[i]);
@@ -344,7 +344,7 @@
 				return	parseInt(pages.parent().parent().find(".sb_pagS")[0].innerHTML);
 			break;
 
-			case "www.jike.com":
+			case "www.panguso.com":
 				return	parseInt(pages.parent().find(".current")[0].innerHTML);
 			break;
 
@@ -428,7 +428,7 @@
 				}
 			break;
 
-			case "www.jike.com":
+			case "www.panguso.com":
 				
 				if(pages){
 					
