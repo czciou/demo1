@@ -27,7 +27,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.17
+// @version     1.3.18
 // ==/UserScript==
 
 (function() {
@@ -185,8 +185,8 @@
 
 				case "www.panguso.com":
 					//设置关键字，并提交表单。
-					$("#txt").val(keyword);
-					$(".searchHome").find("form").submit();
+					$("#q").val(keyword);
+					$(".box-bg").find("form").submit();
 				break;
 
 				//http://so.aliyun.com/
@@ -260,8 +260,8 @@
 
 			case "www.panguso.com":
 				//获取pages
-				if($("#pager")){
-					pages = $("#pager").find(".pg").children();
+				if($("#page")){
+					pages = $("#page").find(".pg_list").children();
 				}else{
 
 				}
@@ -345,7 +345,7 @@
 			break;
 
 			case "www.panguso.com":
-				return	parseInt(pages.parent().find(".current")[0].innerHTML);
+				return	parseInt(pages.parent().find(".pg_current")[0].innerHTML);
 			break;
 
 			case "so.aliyun.com":
@@ -435,7 +435,7 @@
 					curPage =getCurPage();
 					
 					for (var i = pages.length - 1; i >= 0; i--) {
-						if(pages[i].href && pages[i].href.indexOf("page="+(curPage+1))>0){pages[i].click(); return;}
+						if(pages[i].href && pages[i].href.indexOf("p="+(curPage+1))>0){pages[i].click(); return;}
 					};
 				}
 			break;
@@ -472,7 +472,6 @@
 						aMatchHref = aMatch[aMatch.length-1].href;
 						//$(aMatch[aMatch.length-1]).removeAttr("href");
 						aMatch[aMatch.length-1].addEventListener("click",function(evt){
-							
 							if(getOs()=="Chrome"){
 								evt.preventDefault();
 	                            window.opener.location.href=aMatchHref;
