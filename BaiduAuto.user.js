@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.3.18:   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.4:   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.3.19
+// @version     1.4
 // ==/UserScript==
 
 (function() {
