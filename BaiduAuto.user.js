@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.4:   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.4.1:   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.4
+// @version     1.4.1
 // ==/UserScript==
 
 (function() {
@@ -40,8 +40,8 @@
 	var lestTime = 25000;//至少持续多长时间才打开
 	var longTime = 40000;//最长几秒后打开
 
-	var tabCloseLestTime = 50000; //新标签打开后 至少持续多长时间才关闭
-	var tabCloseLongTime = 100000; //新标签打开后 最长几秒后关闭
+	var tabCloseLestTime = 80000; //新标签打开后 至少持续多长时间才关闭
+	var tabCloseLongTime = 150000; //新标签打开后 最长几秒后关闭
 
 	//搜索引擎最大翻页页数
 	var page = 10;
