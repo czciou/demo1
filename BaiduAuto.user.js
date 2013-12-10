@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.4.1:   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.5:keyword changed   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.4.1
+// @version     1.5
 // ==/UserScript==
 
 (function() {
@@ -40,8 +40,8 @@
 	var lestTime = 25000;//至少持续多长时间才打开
 	var longTime = 40000;//最长几秒后打开
 
-	var tabCloseLestTime = 80000; //新标签打开后 至少持续多长时间才关闭
-	var tabCloseLongTime = 150000; //新标签打开后 最长几秒后关闭
+	var tabCloseLestTime = 50000; //新标签打开后 至少持续多长时间才关闭
+	var tabCloseLongTime = 100000; //新标签打开后 最长几秒后关闭
 
 	//搜索引擎最大翻页页数
 	var page = 10;
@@ -93,9 +93,12 @@
 	function getMyDomainAndSetKeyword(){
 		//自定义搜索关键字列表
 		//var zdomoKeywords = ["www.zdomo.com","zdomo.com","site:www.zdomo.com","site:zdomo.com"];
-		var zdomoKeywords = "site:zdomo.com";
-		var buychuanKeywords ="site:buychuan.com";
+		//var zdomoKeywords = "site:zdomo.com";
+		//var buychuanKeywords =["site:buychuan.com"];
 		//var zjmovieKeywords =["www.zjmovie.net","zjmovie.net","site:www.zjmovie.net","site:zjmovie.net"];
+
+		
+
 		//根据url判断是随机域名还是自定义域名
 		if(url.indexOf("site")>0){ 
 		//自定义
@@ -117,11 +120,11 @@
 			// 	return mydomains[1];
 			// }
 		 	if(rnd<100) {
-				keywords = buychuanKeywords;
+				//keywords = buychuanKeywords;
 				return mydomains[2];
 			}
 			else {
-				keywords = zdomoKeywords;
+				//keywords = zdomoKeywords;
 				return mydomains[0];
 			}
 		}
@@ -140,8 +143,34 @@
 			// if(k[1]) keyword = k[1];
 			// else  keyword =keywords[parseInt(Math.random()*keywords.length)]; 
 		}else{
+			//干扰关键字
+			var orderIndexs = ["012","021","102","120","201","210","012","012","012"];
+			var fixedWords = [];
+			var otherWords =["飞机","多芒","日本","时尚","权力","爱美","上头条","新鲜影视","多芒独家","多芒日报","多芒资讯","多芒电影","春风得意","流浪","上当","多芒小丸子","我在马路边","刘德华","曝光","海报"," 苹果","香港","电影","娱乐圈"," 开放 "," 床 ","美","萌","关注","焦点"];
+			var orderIndex =orderIndexs[parseInt(Math.random()*orderIndexs.length)];
+			for (var i = orderIndex.length-1; i >= 0; i--) {
+				switch(orderIndex.charAt(i)){
+					case '0':
+					fixedWords.push("多芒网");
+					break;
+					case '1':
+					fixedWords.push("百川网");
+					break;
+					case '2':
+					fixedWords.push("珠影网络");
+					break;
+
+				}
+			};
+			var wordLenght = parseInt(Math.random()*10)/2==0?2:3;
+			for (var i =wordLenght; i >= 0; i--) {
+				fixedWords.push(otherWords[parseInt(Math.random()*otherWords.length)]);
+			};
+
 			//keyword =keywords[parseInt(Math.random()*keywords.length)];
-		  keyword = keywords;
+
+			keyword = fixedWords.join(" ");
+		  //keyword = keywords;
 			//根据不同搜索引擎，有不同的提交地址。
 			switch(domain){
 				case "www.baidu.com":
@@ -164,7 +193,7 @@
 
 				case "www.sogou.com":
 					//设置关键字，并提交表单。
-					if(keyword.indexOf("site:")<0) keyword = "site:"+keyword;
+					//if(keyword.indexOf("site:")<0) keyword = "site:"+keyword;
 					$("#query").val(keyword);
 					$("#sf").submit();
 				break;
@@ -190,7 +219,7 @@
 				//http://so.aliyun.com/
 				case "so.aliyun.com":
 					//设置关键字，并提交表单。
-					if(keyword.indexOf("site:")<0) keyword = "site:"+keyword;
+					//if(keyword.indexOf("site:")<0) keyword = "site:"+keyword;
 					$("#sq").val(keyword);
 					$("#aliyun_box").find("form").submit();
 				break;
