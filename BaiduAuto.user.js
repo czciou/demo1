@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.5:keyword changed   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.5.1:keyword add.... 1.5:keyword changed   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.5
+// @version     1.5.1
 // ==/UserScript==
 
 (function() {
@@ -146,7 +146,7 @@
 			//干扰关键字
 			var orderIndexs = ["012","021","102","120","201","210","012","012","012"];
 			var fixedWords = [];
-			var otherWords =["飞机","多芒","日本","时尚","权力","爱美","上头条","新鲜影视","多芒独家","多芒日报","多芒资讯","多芒电影","春风得意","流浪","上当","多芒小丸子","我在马路边","刘德华","曝光","海报"," 苹果","香港","电影","娱乐圈"," 开放 "," 床 ","美","萌","关注","焦点"];
+			var otherWords =["zdomo","zdomo.com","zdomo","zdomo","飞机","多芒","日本","时尚","权力","爱美","上头条","新鲜影视","多芒独家","多芒日报","多芒资讯","多芒电影","春风得意","流浪","上当","多芒小丸子","我在马路边","刘德华","曝光","海报"," 苹果","香港","电影","娱乐圈"," 开放 "," 床 ","美","萌","关注","焦点"];
 			var orderIndex =orderIndexs[parseInt(Math.random()*orderIndexs.length)];
 			for (var i = orderIndex.length-1; i >= 0; i--) {
 				switch(orderIndex.charAt(i)){
