@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.5.2:keyword add.&.delete.. 1.5:keyword changed   :去jike,换盘古.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.5.2:keyword add.&.delete..1.6.0 add chinaso.com remove jike and panguso; v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -17,14 +17,15 @@
 // @include       http://cn.bing.com/
 // @include       http://cn.bing.com/?*
 // @include       http://cn.bing.com/search*
-// @include       http://www.panguso.com/
-// @include       http://www.panguso.com/?*
-// @include       http://www.panguso.com/so*
+// @include       http://www.chinaso.com
+// @include       http://www.chinaso.com/
+// @include       http://www.chinaso.com/search/?*
+// @include       http://www.chinaso.com/search/pagesearch.htm?*
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.5.2
+// @version     1.6.0
 // ==/UserScript==
 
 (function() {
@@ -181,7 +182,9 @@
 
 				case "www.so.com":
 					//设置关键字，并提交表单。
-					$("#input").val(keyword);
+					var tempKeywords = ["zdomo.com","影视乐趣多","多芒网新鲜影视"];
+					var tempIndex = parseInt(Math.random()*tempKeywords.length);
+					$("#input").val(tempKeywords[tempIndex]);
 					$("#search-box").find("form").submit();
 				break;
 
@@ -194,26 +197,33 @@
 				case "www.sogou.com":
 					//设置关键字，并提交表单。
 					//if(keyword.indexOf("site:")<0) keyword = "site:"+keyword;
-					$("#query").val(keyword);
+					var tempKeywords = ["zdomo.com","zdomo","多芒网"];
+					var tempIndex = parseInt(Math.random()*tempKeywords.length);
+					$("#query").val(tempKeywords[tempIndex]);
 					$("#sf").submit();
 				break;
 
 				case "www.youdao.com":
 					//设置关键字，并提交表单。
-					$("#query").val(keyword);
+					var tempKeywords = ["zdomo.com","zdomo","多芒网","www.zdomo.com"];
+					var tempIndex = parseInt(Math.random()*tempKeywords.length);
+					$("#query").val(tempKeywords[tempIndex]);
 					$("#fm").find("form").submit();
 				break;
 
 				case "cn.bing.com":
 					//设置关键字，并提交表单。
-					$("#sb_form_q").val(keyword);
+					$("#sb_form_q").val("zdomo.com");
 					$(".search_controls").find("form").submit();
 				break;
 
-				case "www.panguso.com":
+				case "www.chinaso.com":
 					//设置关键字，并提交表单。
-					$("#q").val(keyword);
-					$(".box-bg").find("form").submit();
+					var tempKeywords = ["zdomo.com","zdomo","多芒网","www.zdomo.com"];
+					var tempIndex = parseInt(Math.random()*tempKeywords.length);
+					$("#q").val(tempKeywords[tempIndex]);
+					//$(".search").find("form").submit();
+					$("#flpage").submit();
 				break;
 
 				//http://so.aliyun.com/
@@ -285,10 +295,10 @@
 				}
 			break;
 
-			case "www.panguso.com":
+			case "www.chinaso.com":
 				//获取pages
 				if($("#page")){
-					pages = $("#page").find(".pg_list").children();
+					pages = $("#page").children();
 				}else{
 
 				}
@@ -334,7 +344,7 @@
 					aMatch.push(as[i]);
 				}
 				else{
-					if(parseInt(Math.random()*1000) % 2 ==0 && tempHref.indexOf("soso.com")<0 && tempHref.indexOf("sogou.com")<0 && tempHref.indexOf("bing.com")<0 && tempHref.indexOf("panguso.com")<0 && tempHref.indexOf("youdao.com")<0 && tempHref.indexOf("aliyun.com")<0){
+					if(parseInt(Math.random()*1000) % 2 ==0 && tempHref.indexOf("soso.com")<0 && tempHref.indexOf("sogou.com")<0 && tempHref.indexOf("bing.com")<0 && tempHref.indexOf("chinaso.com")<0 && tempHref.indexOf("youdao.com")<0 && tempHref.indexOf("aliyun.com")<0){
 						$(as[i]).removeAttr("onclick");
 						if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 						aMatch.push(as[i]);
@@ -371,8 +381,8 @@
 				return	parseInt(pages.parent().parent().find(".sb_pagS")[0].innerHTML);
 			break;
 
-			case "www.panguso.com":
-				return	parseInt(pages.parent().find(".pg_current")[0].innerHTML);
+			case "www.chinaso.com":
+				return	parseInt(pages.find("strong")[0].innerHTML);
 			break;
 
 			case "so.aliyun.com":
@@ -455,7 +465,7 @@
 				}
 			break;
 
-			case "www.panguso.com":
+			case "www.chinaso.com":
 				
 				if(pages){
 					
