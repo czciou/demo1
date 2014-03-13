@@ -25,7 +25,7 @@
 // @include       http://www.zdomo.com/*
 // @grant       none
 // @require	https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-// @version     1.6.0
+// @version     1.6.1
 // ==/UserScript==
 
 (function() {
@@ -356,6 +356,7 @@
 
 	//获取当前页
 	function getCurPage(){
+		
 		if(!pages.length || pages.length ==1) return 1;
 		switch(domain){
 			case "www.baidu.com":
@@ -381,10 +382,15 @@
 				return	parseInt(pages.parent().parent().find(".sb_pagS")[0].innerHTML);
 			break;
 
-			case "www.chinaso.com":
-				return	parseInt(pages.find("strong")[0].innerHTML);
+			case "www.chinaso.com":{
+				for(var i=0;i<pages.length;i++){
+						if(pages[i].nodeName=="STRONG")
+						return pages[i].innerHTML;
+						
+					};
+				return 1;
 			break;
-
+			}
 			case "so.aliyun.com":
 				return	parseInt(pages.parent().find("span")[0].innerHTML);
 			break;
