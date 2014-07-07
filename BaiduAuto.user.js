@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.7.6:remove  90hao.com & 2133.com; v1.7.0:add lots of zdomo.com "a" link .1.6.0 add chinaso.com remove jike and panguso; v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank. v1.7.7 submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
-// @version     1.7.6
+// @version     1.7.7
 // ==/UserScript==
 
 /*! jQuery v1.11.0 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -190,7 +190,7 @@
 					var tempKeywords = ["zdomo.com","影视乐趣多","多芒网新鲜影视"];
 					var tempIndex = parseInt(Math.random()*tempKeywords.length);
 					$("#input").val(tempKeywords[tempIndex]);
-					$("#search-box").find("form").submit();
+					$("#bd_search").find("form").submit();
 				break;
 
 				case "www.soso.com":
