@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank. v1.7.7 submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank. v1.7.8 add buychuan.com   submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
-// @version     1.7.7
+// @version     1.7.8
 // ==/UserScript==
 
 /*! jQuery v1.11.0 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -40,7 +40,7 @@
 	var mydomains =["www.zdomo.com","www.zjmovie.net","www.buychuan.com"];
 	//要刷的域名
 	var mydomain = getMyDomainAndSetKeyword();
-	
+
 	var keywords,aMatch=[],keyword,urlRe,k,pages;
 	//自定义隔多长时间 打开子级页面;
 	var lestTime = 25000;//至少持续多长时间才打开
@@ -91,7 +91,7 @@
 	    if(ua.indexOf("ie")>0) return 'IE';
 	}  
 	//if(getOs()=="Chrome" || getOs()=="IE") addJQuery();
-	
+
 	//判断是哪个搜索引擎
 	var domain = window.location.host;
 	var myDomainSplit = mydomain.split('.');
@@ -103,7 +103,7 @@
 		//var buychuanKeywords =["site:buychuan.com"];
 		//var zjmovieKeywords =["www.zjmovie.net","zjmovie.net","site:www.zjmovie.net","site:zjmovie.net"];
 
-		
+
 
 		//根据url判断是随机域名还是自定义域名
 		if(url.indexOf("site")>0){ 
@@ -135,14 +135,14 @@
 			}
 		}
 
-		
+
 	}
 
 
-	
+
 	//提交表单
 	function submitForm(){
-		
+
 		if(url.indexOf("?")>0){
 			// urlRe = /\?\w+=(.+)/g;
 			// k = urlRe.exec(url);
@@ -241,7 +241,7 @@
 			}
 		}
 	}
-	
+
 	//获取分页信息
 	function getPageInfo(){
 		switch(domain){
@@ -318,7 +318,7 @@
 				}
 			break;
 		}
-		
+
 	}
 
 	//找到要打开的a集合
@@ -326,8 +326,10 @@
 		//找出所有是zdomo.com站点的链接。
 		var as = document.getElementsByTagName("a");
 		var tempHref,addonA;
+		var mylength = 60;
+		if (as.length<60) {mylength=as.length;};
 		if(domain=="www.baidu.com"){
-			for (var i = 0; i < as.length; i++) {
+			for (var i = 0; i < mylength; i++) {
 				tempHref =as[i].href;
 				if(tempHref.indexOf("link?")>0 || tempHref.indexOf("url?")>0){
 					$(as[i]).removeAttr("onclick");
@@ -336,8 +338,19 @@
 					addonA = document.createElement("a");
 					addonA.href = "http://www.zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
 					aMatch.push(addonA);
+					addonA = document.createElement("a");
 					addonA.href = "http://www.zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
 					aMatch.push(addonA);
+					if (parseInt(Math.random()*10)<6) {
+						addonA = document.createElement("a");
+						addonA.href = "http://www.buychuan.com/news/content-"+parseInt(300+Math.random()*10949)+".aspx";
+						aMatch.push(addonA);
+						addonA = document.createElement("a");
+						addonA.href = "http://www.buychuan.com/search/sell-offer-"+parseInt(1320+Math.random()*717)+".aspx";
+						aMatch.push(addonA);
+					};
+					
+
 					if(aMatch.length>300) break;
 				}
 			};	
@@ -347,7 +360,8 @@
 			//var re = eval('/^http:\/\/(www\.)?' + myDomainSplit[1] + '\.' + myDomainSplit[2] +'/');
 			//var re = new RegExp('^http:\/\/(www\\.)?'+ myDomainSplit[1] +'\\.' + myDomainSplit[2]);
 			var re = new RegExp('^http:\/\/www\\.'+ myDomainSplit[1] +'\\.' + myDomainSplit[2]);
-			for (var i = 0; i < as.length; i++) {
+
+			for (var i = 0; i < mylength; i++) {
 				tempHref =as[i].href;
 				if(re.test(tempHref)){
 					$(as[i]).removeAttr("onclick");
@@ -364,15 +378,26 @@
 				addonA = document.createElement("a");
 				addonA.href = "http://www.zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
 				aMatch.push(addonA);
+				addonA = document.createElement("a");
 				addonA.href = "http://www.zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
 				aMatch.push(addonA);
+				
+				if (parseInt(Math.random()*10)<6) {
+						addonA = document.createElement("a");
+						addonA.href = "http://www.buychuan.com/news/content-"+parseInt(300+Math.random()*10949)+".aspx";
+						aMatch.push(addonA);
+						addonA = document.createElement("a");
+						addonA.href = "http://www.buychuan.com/search/sell-offer-"+parseInt(1320+Math.random()*717)+".aspx";
+						aMatch.push(addonA);
+				};
+								
 			};	
 		}
 	}
 
 	//获取当前页
 	function getCurPage(){
-		
+
 		if(!pages.length || pages.length ==1) return 1;
 		switch(domain){
 			case "www.baidu.com":
@@ -402,7 +427,7 @@
 				for(var i=0;i<pages.length;i++){
 						if(pages[i].nodeName=="STRONG")
 						return pages[i].innerHTML;
-						
+
 					};
 				return 1;
 			break;
@@ -431,9 +456,9 @@
 
 			case "www.so.com":
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href && pages[i].href.indexOf("pn="+(curPage+1))>0){pages[i].click(); return;}
 					};
@@ -441,22 +466,22 @@
 			break;
 
 			case "www.soso.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href.indexOf("pg="+(curPage+1))>0){pages[i].click(); return;}
 					};
 				}
 			break;
 			case "www.sogou.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href.indexOf("page="+(curPage+1))>0){pages[i].click(); return;}
 					};
@@ -464,11 +489,11 @@
 			break;
 
 			case "www.youdao.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href && pages[i].href.indexOf("page"+(curPage+1))>0){pages[i].click(); return;}
 					};
@@ -476,11 +501,11 @@
 			break;
 
 			case "cn.bing.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = 0; i< pages.length; i++) {
 						if(parseInt(pages[i].innerHTML) == (curPage+1)){pages[i].click(); return;}
 					};
@@ -488,11 +513,11 @@
 			break;
 
 			case "www.chinaso.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href && pages[i].href.indexOf("p="+(curPage+1))>0){pages[i].click(); return;}
 					};
@@ -500,11 +525,11 @@
 			break;
 
 			case "so.aliyun.com":
-				
+
 				if(pages){
-					
+
 					curPage =getCurPage();
-					
+
 					for (var i = pages.length - 1; i >= 0; i--) {
 						if(pages[i].href && pages[i].href.indexOf("page="+(curPage+1))>0){pages[i].click(); return;}
 					};
@@ -514,8 +539,8 @@
 		}
 	}
 
-	
-	
+
+
 
 	//所有搜索引擎页面循环完，再次重新循环。  异步取值，如果取值成功，则说明网络通畅。
 	var timer,timer2,timer3,aMatchHref,openerd;
@@ -546,7 +571,7 @@
                         if(aMatchHref.indexOf("2133.com")<0){
                             aMatch[aMatch.length-1].click();
                         }
-						
+
 						aMatch.pop();
 					}else{
 						//点击下一页链接
@@ -578,7 +603,7 @@
 		if(openerd) openerd.close();
 		setTimeout(closeWin,timer2);
 	}
-	
+
 	//打开页面（后，自转30s--60s;关闭自身页面）  zdomo页面内独立完成
 	//真链接自动跑
 	var aIndex;
@@ -607,10 +632,10 @@
 	} else{
 		setTimeout(autoRun, Math.random()*5000+5000);
 	}
-	
+
 	//页面离开前执行的操作
 	window.onunload = function(){
 		if(openerd) openerd.close();
 	}
-	
+
 })();
