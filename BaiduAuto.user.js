@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank. v1.7.8 add buychuan.com   submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank. v1.8.0 添加各子域名  add buychuan.com   submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
-// @version     1.7.8
+// @version     1.8.0
 // ==/UserScript==
 
 /*! jQuery v1.11.0 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -327,19 +327,22 @@
 		var as = document.getElementsByTagName("a");
 		var tempHref,addonA;
 		var mylength = 60;
+		var preStr = ["ysbb","zgdy","dmdj","xxys","zyyl","dmyx","ssbb","dsj","dmbb","jlp","dqyg","pfph","wgdy","ylbb","mhmh","yp","gykj","blog","dm"];
+		
 		if (as.length<60) {mylength=as.length;};
 		if(domain=="www.baidu.com"){
 			for (var i = 0; i < mylength; i++) {
+				var tempIndex = parseInt(Math.random()*preStr.length);//parseInt(preStr.lenght);
 				tempHref =as[i].href;
 				if(tempHref.indexOf("link?")>0 || tempHref.indexOf("url?")>0){
 					$(as[i]).removeAttr("onclick");
 					if(as[i]!="http://www.zdomo.com/Games.aspx/S-9?s=14")
 					aMatch.push(as[i]);
 					addonA = document.createElement("a");
-					addonA.href = "http://www.zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
+					addonA.href = "http://"+preStr[tempIndex]+".zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
 					aMatch.push(addonA);
 					addonA = document.createElement("a");
-					addonA.href = "http://www.zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
+					addonA.href = "http://"+preStr[tempIndex]+".zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
 					aMatch.push(addonA);
 					if (parseInt(Math.random()*10)<6) {
 						addonA = document.createElement("a");
@@ -362,6 +365,7 @@
 			var re = new RegExp('^http:\/\/www\\.'+ myDomainSplit[1] +'\\.' + myDomainSplit[2]);
 
 			for (var i = 0; i < mylength; i++) {
+				var tempIndex = parseInt(Math.random()*preStr.length);//parseInt(preStr.lenght);
 				tempHref =as[i].href;
 				if(re.test(tempHref)){
 					$(as[i]).removeAttr("onclick");
@@ -376,10 +380,10 @@
 					}
 				}
 				addonA = document.createElement("a");
-				addonA.href = "http://www.zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
+				addonA.href = "http://"+preStr[tempIndex]+".zdomo.com/FindInfo.aspx/M-"+parseInt(Math.random()*4562);
 				aMatch.push(addonA);
 				addonA = document.createElement("a");
-				addonA.href = "http://www.zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
+				addonA.href = "http://"+preStr[tempIndex]+".zdomo.com/News.aspx/T-"+parseInt(Math.random()*7982);
 				aMatch.push(addonA);
 				
 				if (parseInt(Math.random()*10)<6) {
