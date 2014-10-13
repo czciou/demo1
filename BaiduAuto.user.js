@@ -24,7 +24,7 @@
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
-// @version     1.8.1
+// @version     1.8.5
 // ==/UserScript==
 
 /*! jQuery v1.11.0 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
@@ -43,11 +43,11 @@
 
 	var keywords,aMatch=[],keyword,urlRe,k,pages;
 	//自定义隔多长时间 打开子级页面;
-	var lestTime = 25000;//至少持续多长时间才打开
-	var longTime = 40000;//最长几秒后打开
+	var lestTime = 15000;//至少持续多长时间才打开
+	var longTime = 20000;//最长几秒后打开
 
-	var tabCloseLestTime = 50000; //新标签打开后 至少持续多长时间才关闭
-	var tabCloseLongTime = 100000; //新标签打开后 最长几秒后关闭
+	var tabCloseLestTime = 25000; //新标签打开后 至少持续多长时间才关闭
+	var tabCloseLongTime = 50000; //新标签打开后 最长几秒后关闭
 
 	//搜索引擎最大翻页页数
 	var page = 10;
