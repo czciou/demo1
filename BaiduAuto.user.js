@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name        BaiduAuto
 // @namespace   www.baidu.com
-// @description up your alexa rank.v1.8.7 去除所有子站点| v1.8.6 提高频率,再次增加www次数 | v1.8.5 提高频率 | v1.8.1 减少各子域名 ，增加www出现次数。| 添加各子域名  add buychuan.com   submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
+// @description up your alexa rank.v1.8.8更新百度https ; v1.8.7 去除所有子站点| v1.8.6 提高频率,再次增加www次数 | v1.8.5 提高频率 | v1.8.1 减少各子域名 ，增加www出现次数。| 添加各子域名  add buychuan.com   submit so.com. v1.7.6:remove  90hao.com & 2133.com;v1.5.2:keyword add.&.delete.. v1.3.16 清除游戏链接    去除so.aliyun.com v1.3.14 去除zjmovie.net 修正百度form表单提交 v1.3.12 调整打开域名比例; v1.3.11 微调:sogou,aliyun的搜索结果 
 // @include       http://www.baidu.com/
 // @include       http://www.baidu.com/s*
 // @include       http://www.baidu.com/?*
+// @include       https://www.baidu.com/
+// @include       https://www.baidu.com/s*
+// @include       https://www.baidu.com/?*
 // @include       http://www.so.com/
 // @include       http://www.so.com/s*
 // @include       http://www.so.com/?*
@@ -24,7 +27,7 @@
 // @include       http://www.zdomo.com/
 // @include       http://www.zdomo.com/*
 // @grant       none
-// @version     1.8.7
+// @version     1.8.8
 // ==/UserScript==
 
 /*! jQuery v1.11.0 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
